@@ -14,6 +14,8 @@ update-alternatives --set php /usr/bin/php7.3
 WORKDIR /var/www/html
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
+
+#Remove this line when working with an existing project
 RUN composer create-project --prefer-dist yiisoft/yii2-app-basic yii2
 
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
@@ -23,4 +25,6 @@ RUN apt-get install git -y
 RUN git init
 RUN git config user.name "Yii2"
 RUN git config user.email ""
+
+#Remove this line when working with an existing project
 RUN git remote add origin https://github.com/devpresleycobb/yii2.git
